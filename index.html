@@ -1,24 +1,24 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RentEasy - Find Your Perfect Home</title>
+    <title>SVET MEDICAL - Beauty Salon</title>
     <link rel="stylesheet" href="reset.css">
     <style>
         :root {
-            --primary-color: #2563eb;
-            --primary-dark: #1e40af;
-            --secondary-color: #10b981;
-            --text-dark: #1f2937;
-            --text-light: #6b7280;
-            --bg-light: #f9fafb;
+            --primary-color: #c9a96e;
+            --primary-dark: #a07840;
+            --secondary-color: #f3e9d2;
+            --text-dark: #2c2c2c;
+            --text-light: #7a7a7a;
+            --bg-light: #fdf8f2;
             --white: #ffffff;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.12);
         }
 
-        /* Navigation */
+        /*  NAVIGATION ─ */
         nav {
             position: fixed;
             top: 0;
@@ -37,9 +37,34 @@
             align-items: center;
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-placeholder {
+            width: 48px;
+            height: 48px;
+            background: var(--secondary-color);
+            border: 2px dashed var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.6rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .logo-text {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            color: var(--text-dark);
+        }
+
+        .logo-text span {
             color: var(--primary-color);
         }
 
@@ -52,476 +77,919 @@
         .nav-links a {
             color: var(--text-dark);
             font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.03em;
             transition: color 0.3s;
+            text-decoration: none;
         }
 
         .nav-links a:hover {
             color: var(--primary-color);
         }
 
-        .cta-button {
+        .nav-cta {
             background: var(--primary-color);
-            color: var(--white);
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            font-weight: 600;
+            color: var(--white) !important;
+            padding: 0.6rem 1.4rem;
+            border-radius: 25px;
+            font-weight: 600 !important;
             transition: background 0.3s, transform 0.2s;
         }
 
-        .cta-button:hover {
-            background: var(--primary-dark);
+        .nav-cta:hover {
+            background: var(--primary-dark) !important;
             transform: translateY(-2px);
         }
 
-        /* Hero Section */
+        /*  HERO  */
         .hero {
-            margin-top: 70px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: var(--white);
-            padding: 6rem 2rem;
-            text-align: center;
+            margin-top: 74px;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            background: var(--bg-light);
+            padding: 4rem 2rem;
         }
 
-        .hero-content {
-            max-width: 800px;
+        .hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            width: 100%;
+        }
+
+        .hero-text { flex: 1; }
+
+        .hero-tagline {
+            font-size: 0.85rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .hero-text h1 {
+            font-size: 3.2rem;
+            line-height: 1.15;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-text h1 span { color: var(--primary-color); }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            max-width: 480px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 0.85rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 2px solid var(--primary-color);
+            transition: background 0.3s, transform 0.2s;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-color);
+            padding: 0.85rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 2px solid var(--primary-color);
+            transition: background 0.3s, color 0.3s, transform 0.2s;
+            text-decoration: none;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        /*  PHOTO PLACEHOLDER (shared)  */
+        .photo-placeholder {
+            width: 100%;
+            max-width: 480px;
+            aspect-ratio: 4 / 5;
+            background: var(--secondary-color);
+            border: 2px dashed var(--primary-color);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            font-size: 0.85rem;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .photo-placeholder .ph-icon { font-size: 2.5rem; }
+
+        /*  SECTION COMMONS  */
+        section { padding: 5rem 2rem; }
+
+        .section-inner {
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        .hero h1 {
-            font-size: 3rem;
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .eyebrow {
+            font-size: 0.8rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--primary-color);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /*  ABOUT  */
+        .about { background: var(--white); }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image .photo-placeholder {
+            max-width: 100%;
+            aspect-ratio: 1 / 1;
+        }
+
+        .about-text h2 {
+            font-size: 2rem;
+            color: var(--text-dark);
             margin-bottom: 1.5rem;
-            line-height: 1.2;
+            line-height: 1.3;
         }
 
-        .hero p {
-            font-size: 1.25rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.95;
+        .about-text h2 span { color: var(--primary-color); }
+
+        .about-text p {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 1.25rem;
         }
 
-        .hero-buttons {
+        .about-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .stat { text-align: center; }
+        .stat .number { font-size: 2rem; font-weight: 700; color: var(--primary-color); }
+        .stat .label  { font-size: 0.85rem; color: var(--text-light); }
+
+        /*  SERVICES  */
+        .services { background: var(--bg-light); }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-card .photo-placeholder {
+            max-width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 0;
+            border-left: none;
+            border-right: none;
+            border-top: none;
+        }
+
+        .service-card-body { padding: 1.5rem; }
+        .service-card-body h3 { font-size: 1.1rem; color: var(--text-dark); margin-bottom: 0.5rem; }
+        .service-card-body p  { font-size: 0.9rem; color: var(--text-light); line-height: 1.7; margin-bottom: 1rem; }
+        .service-card-body .price { font-weight: 700; color: var(--primary-color); }
+
+        /*  GALLERY  */
+        .gallery { background: var(--white); }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            background: var(--secondary-color);
+            border: 2px dashed var(--primary-color);
+            border-radius: 12px;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            color: var(--primary-color);
+            font-size: 0.78rem;
+            text-align: center;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover { transform: scale(1.03); }
+        .gallery-item.wide  { grid-column: span 2; aspect-ratio: 2 / 1; }
+        .gallery-item .ph-icon { font-size: 2rem; }
+
+        /*  TEAM  */
+        .team { background: var(--bg-light); }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .team-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .team-card:hover { transform: translateY(-4px); }
+
+        .team-card .photo-placeholder {
+            max-width: 100%;
+            aspect-ratio: 3 / 4;
+            border-radius: 0;
+            border-left: none;
+            border-right: none;
+            border-top: none;
+        }
+
+        .team-card-body { padding: 1.25rem; }
+        .team-card-body h3   { font-size: 1rem; color: var(--text-dark); margin-bottom: 0.25rem; }
+        .team-card-body .role { font-size: 0.85rem; color: var(--primary-color); }
+
+        /*  TESTIMONIALS  */
+        .testimonials { background: var(--white); }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--bg-light);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .testimonial-stars { color: var(--primary-color); font-size: 1.1rem; margin-bottom: 1rem; }
+
+        .testimonial-text {
+            color: var(--text-light);
+            line-height: 1.8;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
+
+        .avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--secondary-color);
+            border: 2px dashed var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.6rem;
+            color: var(--primary-color);
+            flex-shrink: 0;
+            font-weight: 700;
+        }
+
+        .author-name  { font-weight: 600; color: var(--text-dark); font-size: 0.9rem; }
+        .author-label { font-size: 0.8rem; color: var(--text-light); }
+
+        /*  BOOKING / CTA  */
+        .booking {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .booking .eyebrow { opacity: 0.8; }
+
+        .booking h2 {
+            font-size: 2.4rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .booking p {
+            opacity: 0.9;
+            max-width: 520px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.8;
+        }
+
+        .booking-form {
             display: flex;
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
         }
 
-        .btn-primary {
+        .booking-form input,
+        .booking-form select {
+            padding: 0.85rem 1.5rem;
+            border-radius: 30px;
+            border: none;
+            outline: none;
+            font-size: 0.95rem;
+            min-width: 180px;
+            background: rgba(255,255,255,0.95);
+            color: var(--text-dark);
+        }
+
+        .btn-white {
             background: var(--white);
             color: var(--primary-color);
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: transform 0.2s, box-shadow 0.3s;
+            padding: 0.85rem 2rem;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.3s, transform 0.2s;
         }
 
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
-        }
+        .btn-white:hover { opacity: 0.88; transform: translateY(-2px); }
 
-        .btn-secondary {
-            background: transparent;
-            color: var(--white);
-            padding: 1rem 2rem;
-            border: 2px solid var(--white);
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: background 0.3s, transform 0.2s;
-        }
+        /*  CONTACT  */
+        .contact { background: var(--bg-light); }
 
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-3px);
-        }
-
-        /* Features Section */
-        .features {
-            padding: 5rem 2rem;
-            background: var(--bg-light);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--text-dark);
-            margin-bottom: 1rem;
-        }
-
-        .section-title p {
-            font-size: 1.1rem;
-            color: var(--text-light);
-        }
-
-        .features-grid {
+        .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
         }
 
-        .feature-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s, box-shadow 0.3s;
+        .contact-info h2 { font-size: 2rem; color: var(--text-dark); margin-bottom: 1.5rem; }
+        .contact-info h2 span { color: var(--primary-color); }
+
+        .contact-detail { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; }
+
+        .detail-icon {
+            width: 44px; height: 44px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; flex-shrink: 0;
         }
 
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
+        .detail-text strong { display: block; color: var(--text-dark); font-size: 0.9rem; margin-bottom: 0.2rem; }
+        .detail-text span   { color: var(--text-light); font-size: 0.9rem; }
 
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            border-radius: 12px;
+        .map-placeholder {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            background: var(--secondary-color);
+            border: 2px dashed var(--primary-color);
+            border-radius: 16px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            gap: 0.75rem;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+        }
+
+        .map-placeholder .ph-icon { font-size: 2.5rem; }
+
+        /*  FOOTER  */
+        footer {
+            background: var(--text-dark);
+            color: rgba(255,255,255,0.75);
+            padding: 3rem 2rem 1.5rem;
+        }
+
+        .footer-inner { max-width: 1200px; margin: 0 auto; }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
             margin-bottom: 1.5rem;
         }
 
-        .feature-card h3 {
-            font-size: 1.5rem;
-            color: var(--text-dark);
-            margin-bottom: 1rem;
-        }
+        .footer-brand .logo-text { color: var(--white); display: block; margin-bottom: 1rem; }
+        .footer-brand p { font-size: 0.9rem; line-height: 1.7; }
 
-        .feature-card p {
-            color: var(--text-light);
-            line-height: 1.7;
-        }
-
-        /* Properties Section */
-        .properties {
-            padding: 5rem 2rem;
-            background: var(--white);
-        }
-
-        .properties-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .property-card {
-            background: var(--white);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .property-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .property-image {
-            width: 100%;
-            height: 220px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            position: relative;
-        }
-
-        .property-badge {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: var(--secondary-color);
+        .footer-col h4 {
             color: var(--white);
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 0.875rem;
+            font-size: 0.9rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 1.25rem;
         }
 
-        .property-content {
-            padding: 1.5rem;
+        .footer-col a {
+            display: block;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.65);
+            margin-bottom: 0.6rem;
+            transition: color 0.3s;
+            text-decoration: none;
         }
 
-        .property-price {
-            font-size: 1.75rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
+        .footer-col a:hover { color: var(--primary-color); }
 
-        .property-price span {
-            font-size: 1rem;
-            color: var(--text-light);
-            font-weight: normal;
-        }
-
-        .property-content h3 {
-            font-size: 1.25rem;
-            color: var(--text-dark);
-            margin-bottom: 0.5rem;
-        }
-
-        .property-location {
-            color: var(--text-light);
-            margin-bottom: 1rem;
+        .footer-bottom {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 0.5rem;
+            font-size: 0.85rem;
         }
 
-        .property-features {
-            display: flex;
-            gap: 1.5rem;
-            padding: 1rem 0;
-            border-top: 1px solid #e5e7eb;
-            border-bottom: 1px solid #e5e7eb;
-            margin-bottom: 1rem;
-        }
+        .social-links { display: flex; gap: 1rem; }
 
-        .property-feature {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--text-light);
-            font-size: 0.95rem;
-        }
-
-        .view-details {
-            display: inline-block;
-            width: 100%;
-            text-align: center;
-            background: var(--primary-color);
-            color: var(--white);
-            padding: 0.875rem;
-            border-radius: 8px;
-            font-weight: 600;
+        .social-link {
+            width: 36px; height: 36px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.85rem; font-weight: 700;
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
             transition: background 0.3s;
         }
 
-        .view-details:hover {
-            background: var(--primary-dark);
-        }
-
-        .view-all {
-            text-align: center;
-        }
-
-        .view-all-btn {
-            display: inline-block;
-            background: transparent;
-            color: var(--primary-color);
-            padding: 1rem 3rem;
-            border: 2px solid var(--primary-color);
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-        }
-
-        .view-all-btn:hover {
-            background: var(--primary-color);
-            color: var(--white);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                gap: 1rem;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn-primary, .btn-secondary {
-                width: 100%;
-                max-width: 300px;
-            }
-
-            .section-title h2 {
-                font-size: 2rem;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .properties-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .property-features {
-                flex-wrap: wrap;
-            }
-        }
+        .social-link:hover { background: var(--primary-color); }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
+
+    <!-- 
+         NAVIGATION
+     -->
     <nav>
         <div class="nav-container">
-            <div class="logo">RentEasy</div>
-            <div class="nav-links">
-                <a href="#features">Features</a>
-                <a href="#properties">Properties</a>
-                <a href="#how-it-works">How It Works</a>
-                <a href="#testimonials">Testimonials</a>
-                <a href="#contact" class="cta-button">Get Started</a>
+            <div class="logo-wrapper">
+                <!-- LOGO PLACEHOLDER -->
+                <div class="logo-placeholder">LOGO</div>
+                <div class="logo-text">SVET <span>MEDICAL</span></div>
             </div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#team">Our Team</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#booking" class="nav-cta">Book Now</a></li>
+            </ul>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>Find Your Dream Home Today</h1>
-            <p>Discover thousands of apartments and houses for rent in your area. Easy search, trusted landlords, and hassle-free renting.</p>
-            <div class="hero-buttons">
-                <a href="#properties" class="btn-primary">Browse Properties</a>
-                <a href="#how-it-works" class="btn-secondary">Learn More</a>
+    <!-- 
+         HERO
+     -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-text">
+                <p class="hero-tagline">Premium Beauty &amp; Medical Aesthetics</p>
+                <h1>Your Beauty,<br>Our <span>Expertise</span></h1>
+                <p>At SVET MEDICAL we blend cutting-edge medical aesthetics with luxurious beauty treatments, tailored exclusively for you.</p>
+                <div class="hero-actions">
+                    <a href="#booking" class="btn-primary">Book an Appointment</a>
+                    <a href="#services" class="btn-outline">Explore Services</a>
+                </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div class="container">
-            <div class="section-title">
-                <h2>Why Choose RentEasy?</h2>
-                <p>Everything you need to find and rent your perfect home</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🏠</div>
-                    <h3>Wide Selection</h3>
-                    <p>Browse thousands of verified listings from apartments to houses in your preferred location and price range.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">✅</div>
-                    <h3>Verified Listings</h3>
-                    <p>All properties are verified by our team. No fake listings, no surprises. What you see is what you get.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💰</div>
-                    <h3>Best Prices</h3>
-                    <p>Compare prices across thousands of properties to find the best deal. Save time and money with smart filters.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔒</div>
-                    <h3>Secure Process</h3>
-                    <p>Your personal information is protected. Secure payments and verified landlords ensure a safe rental experience.</p>
+            <div class="hero-image">
+                <!-- HERO PHOTO PLACEHOLDER -->
+                <div class="photo-placeholder">
+                    <span class="ph-icon"></span>
+                    <strong>Hero Photo</strong>
+                    <span>Recommended: 960  1200 px</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Properties Section -->
-    <section class="properties" id="properties">
-        <div class="container">
-            <div class="section-title">
-                <h2>Featured Properties</h2>
-                <p>Discover our handpicked selection of available rentals</p>
-            </div>
-            <div class="properties-grid">
-                <div class="property-card">
-                    <div class="property-image">🏢
-                        <div class="property-badge">Available</div>
-                    </div>
-                    <div class="property-content">
-                        <div class="property-price">$1,200<span>/month</span></div>
-                        <h3>Modern Downtown Apartment</h3>
-                        <div class="property-location">📍 Downtown District, City Center</div>
-                        <div class="property-features">
-                            <div class="property-feature">🛏️ 2 Beds</div>
-                            <div class="property-feature">🚿 1 Bath</div>
-                            <div class="property-feature">📐 850 sqft</div>
-                        </div>
-                        <a href="#contact" class="view-details">View Details</a>
+    <!-- 
+         ABOUT
+     -->
+    <section class="about" id="about">
+        <div class="section-inner">
+            <div class="about-grid">
+                <div class="about-image">
+                    <!-- ABOUT PHOTO PLACEHOLDER -->
+                    <div class="photo-placeholder">
+                        <span class="ph-icon"></span>
+                        <strong>About Photo</strong>
+                        <span>Recommended: 600  600 px</span>
                     </div>
                 </div>
-
-                <div class="property-card">
-                    <div class="property-image">🏡
-                        <div class="property-badge">Available</div>
-                    </div>
-                    <div class="property-content">
-                        <div class="property-price">$2,100<span>/month</span></div>
-                        <h3>Spacious Family House</h3>
-                        <div class="property-location">📍 Suburban Area, Green Valley</div>
-                        <div class="property-features">
-                            <div class="property-feature">🛏️ 4 Beds</div>
-                            <div class="property-feature">🚿 3 Bath</div>
-                            <div class="property-feature">📐 2,200 sqft</div>
+                <div class="about-text">
+                    <h2>More than a salon <br>a <span>medical experience</span></h2>
+                    <p>SVET MEDICAL was founded on the belief that true beauty comes from within. Our certified specialists combine medical-grade treatments with personalised care to help you look and feel your best.</p>
+                    <p>From advanced skin therapies to classic beauty rituals, every visit is a step toward a more confident you.</p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <div class="number">10+</div>
+                            <div class="label">Years of Experience</div>
                         </div>
-                        <a href="#contact" class="view-details">View Details</a>
+                        <div class="stat">
+                            <div class="number">3k+</div>
+                            <div class="label">Happy Clients</div>
+                        </div>
+                        <div class="stat">
+                            <div class="number">25+</div>
+                            <div class="label">Treatments</div>
+                        </div>
                     </div>
                 </div>
-
-                <div class="property-card">
-                    <div class="property-image">🌆
-                        <div class="property-badge">Available</div>
-                    </div>
-                    <div class="property-content">
-                        <div class="property-price">$950<span>/month</span></div>
-                        <h3>Cozy Studio Loft</h3>
-                        <div class="property-location">📍 Arts District, West Side</div>
-                        <div class="property-features">
-                            <div class="property-feature">🛏️ Studio</div>
-                            <div class="property-feature">🚿 1 Bath</div>
-                            <div class="property-feature">📐 600 sqft</div>
-                        </div>
-                        <a href="#contact" class="view-details">View Details</a>
-                    </div>
-                </div>
-
-                <div class="property-card">
-                    <div class="property-image">🏘️
-                        <div class="property-badge">Available</div>
-                    </div>
-                    <div class="property-content">
-                        <div class="property-price">$1,650<span>/month</span></div>
-                        <h3>Luxury Townhouse</h3>
-                        <div class="property-location">📍 Lakeside, North District</div>
-                        <div class="property-features">
-                            <div class="property-feature">🛏️ 3 Beds</div>
-                            <div class="property-feature">🚿 2.5 Bath</div>
-                            <div class="property-feature">📐 1,800 sqft</div>
-                        </div>
-                        <a href="#contact" class="view-details">View Details</a>
-                    </div>
-                </div>
-            </div>
-            <div class="view-all">
-                <a href="#properties" class="view-all-btn">View All Properties</a>
             </div>
         </div>
     </section>
+
+    <!-- 
+         SERVICES
+     -->
+    <section class="services" id="services">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="eyebrow">What We Offer</span>
+                <h2>Our Services</h2>
+                <p>A curated selection of beauty and medical aesthetic treatments crafted to restore and enhance your natural glow.</p>
+            </div>
+            <div class="services-grid">
+
+                <div class="service-card">
+                    <div class="photo-placeholder"><span class="ph-icon"></span><span>Service Photo</span></div>
+                    <div class="service-card-body">
+                        <h3>Facial Treatments</h3>
+                        <p>Deep-cleansing, hydrating and anti-ageing facials tailored to your skin type.</p>
+                        <span class="price">From $60</span>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="photo-placeholder"><span class="ph-icon"></span><span>Service Photo</span></div>
+                    <div class="service-card-body">
+                        <h3>Laser &amp; Light Therapy</h3>
+                        <p>Medical-grade laser treatments for skin rejuvenation, hair removal and more.</p>
+                        <span class="price">From $120</span>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="photo-placeholder"><span class="ph-icon"></span><span>Service Photo</span></div>
+                    <div class="service-card-body">
+                        <h3>Body Contouring</h3>
+                        <p>Non-invasive sculpting procedures to shape and tone your body naturally.</p>
+                        <span class="price">From $150</span>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="photo-placeholder"><span class="ph-icon"></span><span>Service Photo</span></div>
+                    <div class="service-card-body">
+                        <h3>Makeup &amp; Styling</h3>
+                        <p>Professional makeup application and styling for any occasion.</p>
+                        <span class="price">From $45</span>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="photo-placeholder"><span class="ph-icon"></span><span>Service Photo</span></div>
+                    <div class="service-card-body">
+                        <h3>Nail Care</h3>
+                        <p>Manicure, pedicure, gel nails and nail art by our skilled technicians.</p>
+                        <span class="price">From $30</span>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="photo-placeholder"><span class="ph-icon"></span><span>Service Photo</span></div>
+                    <div class="service-card-body">
+                        <h3>Massage &amp; Wellness</h3>
+                        <p>Relaxing and therapeutic massages to restore your body and mind.</p>
+                        <span class="price">From $80</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+         GALLERY
+     -->
+    <section class="gallery" id="gallery">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="eyebrow">Our Work</span>
+                <h2>Gallery</h2>
+                <p>A glimpse into the transformations and experiences at SVET MEDICAL.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item wide"><span class="ph-icon"></span><span>Gallery Photo  Wide (800400 px)</span></div>
+                <div class="gallery-item"><span class="ph-icon"></span><span>Gallery Photo</span></div>
+                <div class="gallery-item"><span class="ph-icon"></span><span>Gallery Photo</span></div>
+                <div class="gallery-item"><span class="ph-icon"></span><span>Gallery Photo</span></div>
+                <div class="gallery-item"><span class="ph-icon"></span><span>Gallery Photo</span></div>
+                <div class="gallery-item wide"><span class="ph-icon"></span><span>Gallery Photo  Wide (800400 px)</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+         TEAM
+     -->
+    <section class="team" id="team">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="eyebrow">The People Behind Your Beauty</span>
+                <h2>Our Team</h2>
+                <p>Meet our talented and certified specialists dedicated to your care.</p>
+            </div>
+            <div class="team-grid">
+
+                <div class="team-card">
+                    <div class="photo-placeholder"><span class="ph-icon"></span><span>Team Photo</span></div>
+                    <div class="team-card-body">
+                        <h3>Dr. Anna Ivanova</h3>
+                        <span class="role">Medical Aesthetics</span>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="photo-placeholder"><span class="ph-icon"></span><span>Team Photo</span></div>
+                    <div class="team-card-body">
+                        <h3>Maria Petrova</h3>
+                        <span class="role">Senior Cosmetologist</span>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="photo-placeholder"><span class="ph-icon"></span><span>Team Photo</span></div>
+                    <div class="team-card-body">
+                        <h3>Elena Koroleva</h3>
+                        <span class="role">Laser Specialist</span>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="photo-placeholder"><span class="ph-icon"></span><span>Team Photo</span></div>
+                    <div class="team-card-body">
+                        <h3>Sofia Novikova</h3>
+                        <span class="role">Makeup Artist</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+         TESTIMONIALS
+     -->
+    <section class="testimonials">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="eyebrow">Client Stories</span>
+                <h2>What Our Clients Say</h2>
+            </div>
+            <div class="testimonials-grid">
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars"></div>
+                    <p class="testimonial-text">"Incredible experience! The staff at SVET MEDICAL are true professionals. My skin has never looked better."</p>
+                    <div class="testimonial-author">
+                        <div class="avatar">PH</div>
+                        <div>
+                            <div class="author-name">Olga S.</div>
+                            <div class="author-label">Facial Treatment</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars"></div>
+                    <p class="testimonial-text">"I came for laser therapy and left feeling like a completely different person. Highly recommend!"</p>
+                    <div class="testimonial-author">
+                        <div class="avatar">PH</div>
+                        <div>
+                            <div class="author-name">Natalia K.</div>
+                            <div class="author-label">Laser Therapy</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars"></div>
+                    <p class="testimonial-text">"A truly luxurious salon with medical expertise. The team makes you feel valued every step of the way."</p>
+                    <div class="testimonial-author">
+                        <div class="avatar">PH</div>
+                        <div>
+                            <div class="author-name">Irina M.</div>
+                            <div class="author-label">Body Contouring</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+         BOOKING / CTA
+     -->
+    <section class="booking" id="booking">
+        <div class="section-inner">
+            <span class="eyebrow">Ready to Begin?</span>
+            <h2>Book Your Appointment</h2>
+            <p>Choose your preferred service and let us take care of the rest. We look forward to welcoming you at SVET MEDICAL.</p>
+            <div class="booking-form">
+                <input type="text"  placeholder="Your Name">
+                <input type="tel"   placeholder="Phone Number">
+                <select>
+                    <option value="" disabled selected>Select a Service</option>
+                    <option>Facial Treatment</option>
+                    <option>Laser &amp; Light Therapy</option>
+                    <option>Body Contouring</option>
+                    <option>Makeup &amp; Styling</option>
+                    <option>Nail Care</option>
+                    <option>Massage &amp; Wellness</option>
+                </select>
+                <input type="date">
+                <button class="btn-white">Book Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+         CONTACT
+     -->
+    <section class="contact" id="contact">
+        <div class="section-inner">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2>Find Us at<br><span>SVET MEDICAL</span></h2>
+                    <div class="contact-detail">
+                        <div class="detail-icon"></div>
+                        <div class="detail-text">
+                            <strong>Address</strong>
+                            <span>123 Beauty Avenue, City, Country</span>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="detail-icon"></div>
+                        <div class="detail-text">
+                            <strong>Phone</strong>
+                            <span>+1 (555) 000-0000</span>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="detail-icon"></div>
+                        <div class="detail-text">
+                            <strong>Email</strong>
+                            <span>hello@svetmedical.com</span>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="detail-icon"></div>
+                        <div class="detail-text">
+                            <strong>Working Hours</strong>
+                            <span>Mon  Sat: 9:00 AM  8:00 PM</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <!-- MAP PLACEHOLDER -->
+                    <div class="map-placeholder">
+                        <span class="ph-icon"></span>
+                        <strong>Map Placeholder</strong>
+                        <span>Embed Google Maps here</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+         FOOTER
+     -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <span class="logo-text">SVET <span>MEDICAL</span></span>
+                    <p>Premium beauty and medical aesthetic treatments. Your transformation begins here.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <a href="#services">Facial Treatments</a>
+                    <a href="#services">Laser Therapy</a>
+                    <a href="#services">Body Contouring</a>
+                    <a href="#services">Nail Care</a>
+                    <a href="#services">Massage</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <a href="#about">About Us</a>
+                    <a href="#team">Our Team</a>
+                    <a href="#gallery">Gallery</a>
+                    <a href="#">Blog</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <a href="#">123 Beauty Avenue</a>
+                    <a href="tel:+15550000000">+1 (555) 000-0000</a>
+                    <a href="mailto:hello@svetmedical.com">hello@svetmedical.com</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 SVET MEDICAL. All rights reserved.</span>
+                <div class="social-links">
+                    <a href="#" class="social-link">f</a>
+                    <a href="#" class="social-link">in</a>
+                    <a href="#" class="social-link">ig</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
