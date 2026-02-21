@@ -410,6 +410,190 @@
             text-transform: uppercase;
         }
 
+        /* service cover image */
+        .service-card .card-cover {
+            position: relative;
+            overflow: hidden;
+            height: 260px;
+            cursor: pointer;
+        }
+
+        .service-card .card-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s;
+        }
+
+        .service-card .card-cover:hover img { transform: scale(1.04); }
+
+        .service-card .card-cover .cover-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.18);
+            display: flex;
+            align-items: flex-end;
+            padding: 1rem 1.25rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .service-card .card-cover:hover .cover-overlay { opacity: 1; }
+
+        .cover-overlay span {
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        /* PRICE PANEL */
+        .price-panel-backdrop {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.55);
+            z-index: 9000;
+        }
+
+        .price-panel-backdrop.active { display: block; }
+
+        .price-panel {
+            position: fixed;
+            top: 0;
+            right: -520px;
+            width: min(500px, 100vw);
+            height: 100vh;
+            background: var(--white);
+            z-index: 9001;
+            overflow-y: auto;
+            transition: right 0.35s cubic-bezier(.4,0,.2,1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .price-panel.open { right: 0; }
+
+        .price-panel-header {
+            position: sticky;
+            top: 0;
+            background: var(--white);
+            padding: 1.5rem 1.75rem 1rem;
+            border-bottom: 1px solid #f0e8db;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1;
+        }
+
+        .price-panel-header h2 {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin: 0;
+        }
+
+        .price-panel-close {
+            background: none;
+            border: none;
+            font-size: 1.6rem;
+            cursor: pointer;
+            color: var(--text-dark);
+            opacity: 0.6;
+            line-height: 1;
+            transition: opacity 0.2s;
+        }
+
+        .price-panel-close:hover { opacity: 1; }
+
+        .price-panel-cover {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .price-panel-body {
+            padding: 1.25rem 1.75rem;
+            flex: 1;
+        }
+
+        #pp-photos {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        #pp-photos img {
+            width: 100%;
+            border-radius: 10px;
+            display: block;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            cursor: zoom-in;
+            transition: opacity 0.2s;
+        }
+
+        #pp-photos img:hover { opacity: 0.9; }
+
+        /* price photo zoom overlay */
+        .price-zoom-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.96);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .price-zoom-overlay.active { display: flex; }
+
+        .price-zoom-overlay img {
+            max-width: 92vw;
+            max-height: 92vh;
+            border-radius: 12px;
+            object-fit: contain;
+            box-shadow: 0 8px 48px rgba(0,0,0,0.6);
+            cursor: zoom-out;
+        }
+
+        .price-zoom-close {
+            position: fixed;
+            top: 1.25rem;
+            right: 1.5rem;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            z-index: 10001;
+            opacity: 0.75;
+            transition: opacity 0.2s;
+            line-height: 1;
+        }
+
+        .price-zoom-close:hover { opacity: 1; }
+
+        .price-panel-cta {
+            margin: 1.5rem 1.75rem 2rem;
+            display: block;
+            text-align: center;
+            background: var(--primary-color);
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 0.9rem;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .price-panel-cta:hover { background: var(--primary-dark); }
+
         /* -- LIGHTBOX ------------------------------- */
         .lightbox-overlay {
             display: none;
@@ -966,50 +1150,51 @@
             </div>
             <div class="services-grid">
 
-                <!-- HIFU: 1.jpeg + 2.jpeg -->
-                <div class="service-card">
-                    <div class="card-img-duo">
-                        <img src="images/1.jpeg" alt="HIFU 1" onclick="openLightbox('hifu', 0)">
-                        <img src="images/2.jpeg" alt="HIFU 2" onclick="openLightbox('hifu', 1)">
+                <!-- HIFU -->
+                <div class="service-card" onclick="openPricePanel('hifu')" style="cursor:pointer">
+                    <div class="card-cover">
+                        <img src="images/HIFO.jpg" alt="HIFU">
+                        <div class="cover-overlay"><span data-en="View Prices" data-ro="Vezi Prețuri">View Prices</span></div>
                     </div>
                     <div class="service-card-body">
                         <h3>HIFU</h3>
-                        <button class="view-btn" onclick="openLightbox('hifu', 0)">Vezi toate &rsaquo;</button>
+                        <button class="view-btn" data-en="View Prices &rsaquo;" data-ro="Vezi Pre&#x21B;uri &rsaquo;">View Prices &rsaquo;</button>
                     </div>
                 </div>
 
-                <!-- Pentru Femei: 3.jpeg + 4.jpeg -->
-                <div class="service-card">
-                    <div class="card-img-duo">
-                        <img src="images/3.jpeg" alt="Pentru Femei 1" onclick="openLightbox('femei', 0)">
-                        <img src="images/4.jpeg" alt="Pentru Femei 2" onclick="openLightbox('femei', 1)">
+                <!-- Pentru Femei -->
+                <div class="service-card" onclick="openPricePanel('femei')" style="cursor:pointer">
+                    <div class="card-cover">
+                        <img src="images/for_women.jpg" alt="For Women">
+                        <div class="cover-overlay"><span data-en="View Prices" data-ro="Vezi Prețuri">View Prices</span></div>
                     </div>
                     <div class="service-card-body">
                         <h3 data-en="For Women" data-ro="Pentru Femei">For Women</h3>
-                        <button class="view-btn" onclick="openLightbox('femei', 0)" data-en="View all &rsaquo;" data-ro="Vezi toate &rsaquo;">View all &rsaquo;</button>
+                        <button class="view-btn" data-en="View Prices &rsaquo;" data-ro="Vezi Pre&#x21B;uri &rsaquo;">View Prices &rsaquo;</button>
                     </div>
                 </div>
 
-                <!-- EMS Shape: 5.jpeg only -->
-                <div class="service-card">
-                    <div class="card-img-single">
-                        <img src="images/5.jpeg" alt="EMS Shape" onclick="openLightbox('ems', 0)">
+                <!-- EMS Shape -->
+                <div class="service-card" onclick="openPricePanel('ems')" style="cursor:pointer">
+                    <div class="card-cover">
+                        <img src="images/ems_shape.jpg" alt="EMS Shape">
+                        <div class="cover-overlay"><span data-en="View Prices" data-ro="Vezi Prețuri">View Prices</span></div>
                     </div>
                     <div class="service-card-body">
                         <h3>EMS Shape</h3>
-                        <button class="view-btn" onclick="openLightbox('ems', 0)">Vezi toate &rsaquo;</button>
+                        <button class="view-btn" data-en="View Prices &rsaquo;" data-ro="Vezi Pre&#x21B;uri &rsaquo;">View Prices &rsaquo;</button>
                     </div>
                 </div>
 
-                <!-- Pentru Bărbați: 6.jpeg + 7.jpeg -->
-                <div class="service-card">
-                    <div class="card-img-duo">
-                        <img src="images/6.jpeg" alt="Pentru Bărbați 1" onclick="openLightbox('barbati', 0)">
-                        <img src="images/7.jpeg" alt="Pentru Bărbați 2" onclick="openLightbox('barbati', 1)">
+                <!-- Pentru Bărbați -->
+                <div class="service-card" onclick="openPricePanel('barbati')" style="cursor:pointer">
+                    <div class="card-cover">
+                        <img src="images/for_men.jpg" alt="For Men">
+                        <div class="cover-overlay"><span data-en="View Prices" data-ro="Vezi Prețuri">View Prices</span></div>
                     </div>
                     <div class="service-card-body">
                         <h3 data-en="For Men" data-ro="Pentru Bărbați">For Men</h3>
-                        <button class="view-btn" onclick="openLightbox('barbati', 0)" data-en="View all &rsaquo;" data-ro="Vezi toate &rsaquo;">View all &rsaquo;</button>
+                        <button class="view-btn" data-en="View Prices &rsaquo;" data-ro="Vezi Pre&#x21B;uri &rsaquo;">View Prices &rsaquo;</button>
                     </div>
                 </div>
 
@@ -1259,6 +1444,28 @@
         </div>
     </footer>
 
+    <!-- PRICE PHOTO ZOOM -->
+    <div class="price-zoom-overlay" id="price-zoom" onclick="closePriceZoom()">
+        <button class="price-zoom-close" onclick="closePriceZoom()">&times;</button>
+        <img id="price-zoom-img" src="" alt="Price list">
+    </div>
+
+    <!-- PRICE PANEL BACKDROP -->
+    <div class="price-panel-backdrop" id="price-backdrop" onclick="closePricePanel()"></div>
+
+    <!-- PRICE PANEL -->
+    <aside class="price-panel" id="price-panel">
+        <div class="price-panel-header">
+            <h2 id="pp-title">HIFU</h2>
+            <button class="price-panel-close" onclick="closePricePanel()">&times;</button>
+        </div>
+        <img class="price-panel-cover" id="pp-cover" src="" alt="">
+        <div class="price-panel-body">
+            <div id="pp-photos"></div>
+        </div>
+        <a href="#booking" class="price-panel-cta" onclick="closePricePanel()" data-en="Book an Appointment" data-ro="Programeaz&#x103;-te">Book an Appointment</a>
+    </aside>
+
     <!-- VIDEO LIGHTBOX -->
     <div class="video-lightbox" id="video-lightbox" onclick="closeVideoLightboxOnBg(event)">
         <button class="video-lightbox-close" onclick="closeVideoLightbox()">&times;</button>
@@ -1320,15 +1527,56 @@
 
         // keyboard navigation
         document.addEventListener('keydown', function(e) {
-            if (document.getElementById('video-lightbox').classList.contains('active')) {
-                if (e.key === 'Escape') closeVideoLightbox();
+            if (e.key === 'Escape') {
+                if (document.getElementById('price-zoom').classList.contains('active')) { closePriceZoom(); return; }
+                if (document.getElementById('price-panel').classList.contains('open')) { closePricePanel(); return; }
+                if (document.getElementById('video-lightbox').classList.contains('active')) { closeVideoLightbox(); return; }
+                closeLightbox();
                 return;
             }
+            if (document.getElementById('video-lightbox').classList.contains('active')) return;
             if (!document.getElementById('lightbox').classList.contains('active')) return;
             if (e.key === 'ArrowRight') lightboxNav(1);
             if (e.key === 'ArrowLeft')  lightboxNav(-1);
-            if (e.key === 'Escape')     closeLightbox();
         });
+
+        // ── PRICE PANEL ─────────────────────────────────────────────
+        const priceData = {
+            hifu:    { en: 'HIFU',       ro: 'HIFU',             cover: 'images/HIFO.jpg',      photos: ['images/2.jpeg'] },
+            femei:   { en: 'For Women',  ro: 'Pentru Femei',     cover: 'images/for_women.jpg', photos: ['images/3.jpeg', 'images/4.jpeg'] },
+            ems:     { en: 'EMS Shape',  ro: 'EMS Shape',        cover: 'images/ems_shape.jpg', photos: ['images/5.jpeg'] },
+            barbati: { en: 'For Men',    ro: 'Pentru Bărbați',   cover: 'images/for_men.jpg',   photos: ['images/6.jpeg', 'images/7.jpeg'] },
+        };
+
+        function openPricePanel(key) {
+            const lang = typeof currentLang !== 'undefined' ? currentLang : 'en';
+            const data = priceData[key];
+            document.getElementById('pp-title').textContent = data[lang];
+            document.getElementById('pp-cover').src = data.cover;
+            document.getElementById('pp-cover').alt = data[lang];
+            document.getElementById('pp-photos').innerHTML = data.photos
+                .map(src => `<img src="${src}" alt="Price list" onclick="openPriceZoom('${src}')">`)
+                .join('');
+            document.getElementById('price-panel').classList.add('open');
+            document.getElementById('price-backdrop').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePricePanel() {
+            document.getElementById('price-panel').classList.remove('open');
+            document.getElementById('price-backdrop').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function openPriceZoom(src) {
+            document.getElementById('price-zoom-img').src = src;
+            document.getElementById('price-zoom').classList.add('active');
+        }
+
+        function closePriceZoom() {
+            document.getElementById('price-zoom').classList.remove('active');
+            document.getElementById('price-zoom-img').src = '';
+        }
 
         // ── VIDEO LIGHTBOX ──────────────────────────────────────────
         function openVideoLightbox(src) {
